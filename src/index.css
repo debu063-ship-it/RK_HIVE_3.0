@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+  
+  body {
+    background-color: #050507;
+    color: #F8F9FA;
+    font-family: 'Urbanist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: rgba(255, 19, 118, 0.28);
+    color: #FFE4EE;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050507;
+}
+::-webkit-scrollbar-thumb {
+  background: #171B24;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0284C7;
+}
+
+/* Accessible focus styling */
+:focus-visible {
+  outline: 2px solid #0EA5E9;
+  outline-offset: 3px;
+}
+
+/* Editorial surface & separators */
+.editorial-surface {
+  background-color: #0B0E14;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.editorial-surface-rose {
+  background-color: #0E090D;
+  border: 1px solid rgba(255, 19, 118, 0.18);
+}
+
+.editorial-surface-cerulean {
+  background-color: #070D14;
+  border: 1px solid rgba(14, 165, 233, 0.18);
+}
+
+.editorial-divider {
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+/* ==========================================================================
+   Apple iOS Liquid Glass Squircle Placeholder / Surface
+   Matches the specular curved rim highlight, inner glass reflection & squircle geometry
+   ========================================================================== */
+.ios-squircle {
+  position: relative;
+  border-radius: 2rem;
+  background: radial-gradient(130% 120% at 50% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 65%, rgba(0, 0, 0, 0.5) 100%), #0A0D14;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.5),
+    inset 0 -1px 1px 0 rgba(255, 255, 255, 0.2),
+    0 30px 60px -15px rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  overflow: hidden;
+}
+
+@media (min-width: 640px) {
+  .ios-squircle {
+    border-radius: 2.5rem;
+  }
+}
+
+/* Top curved specular rim highlight beam (iPhone / VisionOS lens edge) */
+.ios-squircle::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.35) 20%, #ffffff 50%, rgba(255, 255, 255, 0.35) 80%, transparent 100%);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.85)) drop-shadow(0 -3px 12px rgba(255, 255, 255, 0.55));
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* Bottom subtle specular rim reflection */
+.ios-squircle::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 20%;
+  right: 20%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.25) 25%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.25) 75%, transparent 100%);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.5));
+  border-radius: 9999px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+/* iOS Spring Micro-interactions */
+.ios-tap-spring {
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1), background-color 0.2s ease, opacity 0.2s ease;
+}
+.ios-tap-spring:active {
+  transform: scale(0.96);
+}
+
+/* iOS Segmented Capsule */
+.ios-segmented-capsule {
+  background-color: rgba(10, 13, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  padding: 4px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
